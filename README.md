@@ -1,6 +1,6 @@
-# Emakefun Gesture Recognizer
+# Emakefun Matrix Keyboard
 
-这个Arduino库是用于使用`emakefun`的手势识别传感器
+这个Arduino库是用于使用`emakefun`的矩阵键盘
 
 ## 产品详情
 
