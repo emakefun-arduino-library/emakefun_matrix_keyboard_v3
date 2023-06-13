@@ -37,24 +37,23 @@
 #define LOG(...) (void(0))  // for debug
 
 namespace {
-const MatrixKeyboard::Key g_keys[] = {
-    MatrixKeyboard::kKeyNone,
-    MatrixKeyboard::kKey1,
-    MatrixKeyboard::kKey2,
-    MatrixKeyboard::kKey3,
-    MatrixKeyboard::kKeyA,
-    MatrixKeyboard::kKey4,
-    MatrixKeyboard::kKey5,
-    MatrixKeyboard::kKey6,
-    MatrixKeyboard::kKeyB,
-    MatrixKeyboard::kKey7,
-    MatrixKeyboard::kKey8,
-    MatrixKeyboard::kKey9,
-    MatrixKeyboard::kKeyC,
-    MatrixKeyboard::kKeyAsterisk,
-    MatrixKeyboard::kKey0,
-    MatrixKeyboard::kKeyPound,
-    MatrixKeyboard::kKeyD,
+const char g_keys[] = {
+    '1',
+    '2',
+    '3',
+    'A',
+    '4',
+    '5',
+    '6',
+    'B',
+    '7',
+    '8',
+    '9',
+    'C',
+    '*',
+    '0',
+    '#',
+    'D',
 };
 }  // namespace
 
@@ -145,7 +144,7 @@ char MatrixKeyboard::GetTouchedKey() {
         key_status >>= 1;
         key++;
       }
-      return g_keys[key + 1];
+      return g_keys[key];
     }
 
     key += 8;
