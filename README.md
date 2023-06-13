@@ -12,4 +12,4 @@
 
 ## 示例程序
 
-[获取当前的按键值](https://emakefun-arduino-library.github.io/emakefun_matrix_keyboard/get_touched_key_8ino-example.html)
+- 获取当前的按键值 [链接](https://emakefun-arduino-library.github.io/emakefun_matrix_keyboard/get_touched_key_8ino-example.html)
