@@ -34,10 +34,8 @@
 
 #define WIRE_TIMEOUT_US (3000)
 
-#define LOG(...) (void(0))  // for debug
-
 namespace {
-const char g_keys[] = {
+constexpr char g_keys[] = {
     '1',
     '2',
     '3',
@@ -55,13 +53,19 @@ const char g_keys[] = {
     '#',
     'D',
 };
+
+template <size_t size>
+constexpr uint8_t Checksum(const uint8_t (&data)[size], const size_t index = 0) {
+  return index >= size ? 0 : data[index] + Checksum(data, index + 1);
+}
+
 }  // namespace
 
 MatrixKeyboard::MatrixKeyboard(const uint8_t device_i2c_address) : device_i2c_address_(device_i2c_address) {
 }
 
 bool MatrixKeyboard::Setup() {
-  const uint8_t setting_bytes[] = {
+  constexpr uint8_t setting_bytes[] = {
       0x00,  // Option1
       0x00,  // Reserve
       0x83,  // Reserve
@@ -92,63 +96,38 @@ bool MatrixKeyboard::Setup() {
   Wire.begin();
   Wire.beginTransmission(device_i2c_address_);
   Wire.write(SETTING_REGISTER_START_BYTE);
-  uint8_t checksum = 0;
-  for (auto i = 0; i < sizeof(setting_bytes); i++) {
-    checksum += setting_bytes[i];
-    if (1 != Wire.write(setting_bytes[i])) {
-      LOG("Wire.write failed");
-      return false;
-    }
-    delay(20);
-  }
-
-  if (1 != Wire.write(checksum)) {
-    LOG("Wire.write failed");
-    return false;
-  }
-
-  if (0 != Wire.endTransmission()) {
-    LOG("Wire.endTransmission failed");
-    return false;
-  }
-
-  return true;
+  Wire.write(setting_bytes, sizeof(setting_bytes));
+  Wire.write(Checksum(setting_bytes));
+  return Wire.endTransmission() == 0;
 }
 
 char MatrixKeyboard::GetTouchedKey() {
+  int16_t button_states = 0;
   Wire.setWireTimeout(WIRE_TIMEOUT_US, true);
   Wire.clearWireTimeoutFlag();
   Wire.beginTransmission(device_i2c_address_);
-  if (1 != Wire.write(TOUCH_KEY_STATUS_DATA_REGISTER)) {
-    LOG("Wire.write failed.");
-    return '\0';
-  }
+  Wire.write(TOUCH_KEY_STATUS_DATA_REGISTER);
 
   if (0 != Wire.endTransmission()) {
-    LOG("Wire.endTransmission failed");
     return '\0';
   }
 
-  if (0 ==
-      Wire.requestFrom(device_i2c_address_, static_cast<uint8_t>(KEY_STATUS_STRUCTURE_SIZE), static_cast<uint8_t>(false))) {
+  if (0 == Wire.requestFrom(device_i2c_address_, sizeof(button_states))) {
     return '\0';
   }
 
-  uint8_t key_status = 0;
-  uint8_t key = 0;
-
-  while (Wire.available()) {
-    key_status = Wire.read();
-    if (key_status != 0) {
-      while ((key_status & 0x1) == 0) {
-        key_status >>= 1;
-        key++;
-      }
-      return g_keys[key];
-    }
-
-    key += 8;
+  if (sizeof(button_states) != Wire.readBytes(reinterpret_cast<uint8_t*>(&button_states), sizeof(button_states))) {
+    return '\0';
   }
 
-  return '\0';
+  char touched_key = '\0';
+
+  if (last_button_states_ == 0 && (last_button_states_ ^ button_states) != 0) {
+    static_assert(sizeof(button_states) <= sizeof(int));
+    touched_key = g_keys[__builtin_ffs(button_states) - 1];
+  }
+
+  last_button_states_ = button_states;
+
+  return touched_key;
 }

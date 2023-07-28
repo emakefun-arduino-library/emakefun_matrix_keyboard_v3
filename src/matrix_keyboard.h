@@ -82,4 +82,5 @@ class MatrixKeyboard {
   MatrixKeyboard& operator=(const MatrixKeyboard&) = delete;
 
   const uint8_t device_i2c_address_;
+  int16_t last_button_states_ = 0;
 };
