@@ -36,10 +36,10 @@ class MatrixKeyboard {
    * @brief 默认I2C地址
    *
    */
-  enum : uint8_t { kDeviceI2cAddressDefault = 0x50, /**< 0x50, 默认I2C地址 */ };
+  enum : uint8_t { kDeviceI2cAddressDefault = 0x65, /**< 0x65, 默认I2C地址 */ };
   /**
    * @brief 构造函数
-   * @param [in] device_i2c_address 矩阵键盘的I2C地址，默认值为0x50
+   * @param [in] device_i2c_address 矩阵键盘的I2C地址，默认值为0x65
    */
   MatrixKeyboard(const uint8_t device_i2c_address = kDeviceI2cAddressDefault);
   /**
@@ -80,7 +80,9 @@ class MatrixKeyboard {
  private:
   MatrixKeyboard(const MatrixKeyboard&) = delete;
   MatrixKeyboard& operator=(const MatrixKeyboard&) = delete;
+  int16_t ReadButtonStates();
 
   const uint8_t device_i2c_address_;
   int16_t last_button_states_ = 0;
+  int16_t button_states_ = 0;
 };

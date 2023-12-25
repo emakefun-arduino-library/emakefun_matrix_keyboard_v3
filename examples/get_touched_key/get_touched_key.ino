@@ -4,13 +4,13 @@
  */
 
 // 包含头文件matrix_keyboard.h
-#include "matrix_keyboard.h"
+#include "matrix_keyboard_v3.h"
 
 MatrixKeyboard key_board;
 
 void setup() {
   Serial.begin(115200);
-  key_board.Setup();  // 在setup函数内调用MatrixKeyboard::Setup();
+  key_board.Initialize();  // 在setup函数内调用MatrixKeyboard::Initialize();
   Serial.println("setup done");
 }
 

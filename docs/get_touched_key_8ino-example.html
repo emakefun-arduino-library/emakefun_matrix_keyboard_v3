@@ -80,18 +80,18 @@ $(function() {
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// 包含头文件matrix_keyboard.h</span></div>
-<div class="line"><span class="preprocessor">#include &quot;matrix_keyboard.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;matrix_keyboard_v3.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><a id="_a0" name="_a0"></a><a class="code hl_class" href="class_matrix_keyboard.html">MatrixKeyboard</a> key_board;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
 <div class="line">  Serial.begin(115200);</div>
-<div class="line">  key_board.<a id="a1" name="a1"></a><a class="code hl_function" href="class_matrix_keyboard.html#afcd68e618a9c4bee9bfaf81bb74e91f0">Setup</a>();  <span class="comment">// 在setup函数内调用MatrixKeyboard::Setup();</span></div>
+<div class="line">  key_board.Initialize();  <span class="comment">// 在setup函数内调用MatrixKeyboard::Initialize();</span></div>
 <div class="line">  Serial.println(<span class="stringliteral">&quot;setup done&quot;</span>);</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
-<div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> key = key_board.<a id="a2" name="a2"></a><a class="code hl_function" href="class_matrix_keyboard.html#a41fabc23b0f8b8460b2278314df8a2fe">GetTouchedKey</a>();  <span class="comment">// 获取当前按下的按键值</span></div>
+<div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> key = key_board.<a id="a1" name="a1"></a><a class="code hl_function" href="class_matrix_keyboard.html#a41fabc23b0f8b8460b2278314df8a2fe">GetTouchedKey</a>();  <span class="comment">// 获取当前按下的按键值</span></div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// 如果当前按键值不为&#39;\0&#39;则打印出按键值</span></div>
 <div class="line">  <span class="keywordflow">if</span> (key != <span class="charliteral">&#39;\0&#39;</span>) {</div>
@@ -150,9 +150,8 @@ $(function() {
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_matrix_keyboard_html"><div class="ttname"><a href="class_matrix_keyboard.html">MatrixKeyboard</a></div><div class="ttdoc">矩阵键盘</div><div class="ttdef"><b>Definition</b> matrix_keyboard.h:33</div></div>
-<div class="ttc" id="aclass_matrix_keyboard_html_a41fabc23b0f8b8460b2278314df8a2fe"><div class="ttname"><a href="class_matrix_keyboard.html#a41fabc23b0f8b8460b2278314df8a2fe">MatrixKeyboard::GetTouchedKey</a></div><div class="ttdeci">char GetTouchedKey()</div><div class="ttdoc">获取当前按下的按键值</div><div class="ttdef"><b>Definition</b> matrix_keyboard.cpp:104</div></div>
-<div class="ttc" id="aclass_matrix_keyboard_html_afcd68e618a9c4bee9bfaf81bb74e91f0"><div class="ttname"><a href="class_matrix_keyboard.html#afcd68e618a9c4bee9bfaf81bb74e91f0">MatrixKeyboard::Setup</a></div><div class="ttdeci">bool Setup()</div><div class="ttdoc">初始化设置</div><div class="ttdef"><b>Definition</b> matrix_keyboard.cpp:67</div></div>
+<div class="ttc" id="aclass_matrix_keyboard_html"><div class="ttname"><a href="class_matrix_keyboard.html">MatrixKeyboard</a></div><div class="ttdoc">矩阵键盘</div><div class="ttdef"><b>Definition</b> matrix_keyboard_v3.h:33</div></div>
+<div class="ttc" id="aclass_matrix_keyboard_html_a41fabc23b0f8b8460b2278314df8a2fe"><div class="ttname"><a href="class_matrix_keyboard.html#a41fabc23b0f8b8460b2278314df8a2fe">MatrixKeyboard::GetTouchedKey</a></div><div class="ttdeci">char GetTouchedKey()</div><div class="ttdoc">获取当前按下的按键值</div><div class="ttdef"><b>Definition</b> matrix_keyboard_v3.cpp:64</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

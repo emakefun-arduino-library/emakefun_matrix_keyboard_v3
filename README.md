@@ -1,4 +1,4 @@
-# Emakefun Matrix Keyboard
+# Emakefun Matrix Keyboard V3.0
 
 这个Arduino库是用于使用`emakefun`的矩阵键盘
 
