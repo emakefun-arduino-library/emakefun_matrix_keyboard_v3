@@ -3,14 +3,14 @@
  * @brief 获取当前的按键值并打印
  */
 
-// 包含头文件matrix_keyboard.h
+// 包含头文件matrix_keyboard_v3.h
 #include "matrix_keyboard_v3.h"
 
 MatrixKeyboard key_board;
 
 void setup() {
   Serial.begin(115200);
-  key_board.Initialize();  // 在setup函数内调用MatrixKeyboard::Initialize();
+  key_board.Setup();  // 在setup函数内调用MatrixKeyboard::Setup();
   Serial.println("setup done");
 }
 

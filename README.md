@@ -8,8 +8,8 @@
 
 ## Class MatrixKeyboard 介绍
 
-[文档链接](https://emakefun-arduino-library.github.io/emakefun_matrix_keyboard/class_matrix_keyboard.html)
+[文档链接](https://emakefun-arduino-library.github.io/emakefun_matrix_keyboard_v3/class_matrix_keyboard.html)
 
 ## 示例程序
 
-- 获取当前的按键值 [链接](https://emakefun-arduino-library.github.io/emakefun_matrix_keyboard/get_touched_key_8ino-example.html)
+- 获取当前的按键值 [链接](https://emakefun-arduino-library.github.io/emakefun_matrix_keyboard_v3/get_touched_key_8ino-example.html)
