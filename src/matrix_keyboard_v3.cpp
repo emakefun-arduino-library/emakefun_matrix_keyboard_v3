@@ -3,8 +3,8 @@
 namespace emakefun {
 
 MatrixKeyboardV3::MatrixKeyboardV3(TwoWire& wire, const uint8_t i2c_address)
-    : wire_(wire), i2c_address_(i2c_address), debouncer_(kKeyNone) {
-  debouncer_.Start(10);
+    : wire_(wire), i2c_address_(i2c_address), key_(kKeyNone) {
+  key_.Start(10);
 }
 
 MatrixKeyboardV3::ErrorCode MatrixKeyboardV3::Initialize() {
@@ -13,20 +13,20 @@ MatrixKeyboardV3::ErrorCode MatrixKeyboardV3::Initialize() {
 }
 
 void MatrixKeyboardV3::Update() {
-  last_key_states_ = key_states_;
-  key_states_ = debouncer_(ReadKey());
+  last_key_states_ = key_();
+  key_ = ReadKey();
 }
 
 bool MatrixKeyboardV3::Pressed(const MatrixKeyboardV3::Key key) {
-  return (last_key_states_ & key) == 0 && (key_states_ & key) != 0;
+  return (last_key_states_ & key) == 0 && (key_() & key) != 0;
 }
 
 bool MatrixKeyboardV3::Pressing(const MatrixKeyboardV3::Key key) {
-  return (last_key_states_ & key) != 0 && (key_states_ & key) != 0;
+  return (last_key_states_ & key) != 0 && (key_() & key) != 0;
 }
 
 bool MatrixKeyboardV3::Released(const MatrixKeyboardV3::Key key) {
-  return (last_key_states_ & key) != 0 && (key_states_ & key) == 0;
+  return (last_key_states_ & key) != 0 && (key_() & key) == 0;
 }
 
 MatrixKeyboardV3::Key MatrixKeyboardV3::ReadKey() {

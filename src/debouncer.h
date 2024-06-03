@@ -32,6 +32,14 @@ class Debouncer {
     return Debounce(value);
   }
 
+  inline T operator=(const T value) {
+    return Debounce(value);
+  }
+
+  inline T operator()() {
+    return last_value_;
+  }
+
  private:
   T debouncing_value_;
   T last_value_;

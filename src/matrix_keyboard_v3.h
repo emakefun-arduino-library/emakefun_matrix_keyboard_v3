@@ -82,9 +82,8 @@ class MatrixKeyboardV3 {
 
   TwoWire& wire_ = Wire;
   const uint8_t i2c_address_ = kDefaultI2cAddress;
-  Debouncer<Key> debouncer_;
+  Debouncer<Key> key_;
   Key last_key_states_ = kKeyNone;
-  Key key_states_ = kKeyNone;
 };
 }  // namespace emakefun
 #endif
