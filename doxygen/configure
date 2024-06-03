@@ -5,4 +5,4 @@ PROJECT_NUMBER   = 3.0
 ENABLED_SECTIONS = Chinese
 OUTPUT_LANGUAGE  = Chinese
 INPUT            = src \
-                 = examples\print_key\print_key.ino
+                 = examples/print_key_state/print_key_state.ino

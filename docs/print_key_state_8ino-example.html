@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Emakefun matrix keyboard: print_key.ino</title>
+<title>Emakefun matrix keyboard: print_key_state.ino</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,11 +69,11 @@ $(function() {
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">print_key.ino</div></div>
+  <div class="headertitle"><div class="title">print_key_state.ino</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><span class="comment">/**</span></div>
-<div class="line"><span class="comment"> * @example print_key.ino</span></div>
+<div class="line"><span class="comment"> * @example print_key_state.ino</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;Wire.h&gt;</span></div>
@@ -82,7 +82,7 @@ $(function() {
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#define INFINITE_LOOP_ON_FAILURE InfiniteLoopOnFailure(__FUNCTION__, __LINE__)</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#define PRINT_KEY(key)                                                            \</span></div>
+<div class="line"><span class="preprocessor">#define PRINT_KEY_STATE(key)                                                      \</span></div>
 <div class="line"><span class="preprocessor">  if (g_matrix_keyboard.Pressed(emakefun::MatrixKeyboardV3::kKey##key)) {         \</span></div>
 <div class="line"><span class="preprocessor">    Serial.println(F(&quot;key &quot;</span> #key &quot; pressed&quot;));                                    \</div>
 <div class="line">  } else if (g_matrix_keyboard.Pressing(emakefun::MatrixKeyboardV3::kKey##key)) { \</div>
@@ -124,26 +124,26 @@ $(function() {
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
-<div class="line">  g_matrix_keyboard.Tick();</div>
+<div class="line">  g_matrix_keyboard.Tick();  <span class="comment">// 在循环中调用</span></div>
 <div class="line"> </div>
-<div class="line">  PRINT_KEY(0);</div>
-<div class="line">  PRINT_KEY(1);</div>
-<div class="line">  PRINT_KEY(2);</div>
-<div class="line">  PRINT_KEY(3);</div>
-<div class="line">  PRINT_KEY(4);</div>
-<div class="line">  PRINT_KEY(5);</div>
-<div class="line">  PRINT_KEY(6);</div>
-<div class="line">  PRINT_KEY(7);</div>
-<div class="line">  PRINT_KEY(8);</div>
-<div class="line">  PRINT_KEY(9);</div>
-<div class="line">  PRINT_KEY(A);</div>
-<div class="line">  PRINT_KEY(B);</div>
-<div class="line">  PRINT_KEY(C);</div>
-<div class="line">  PRINT_KEY(D);</div>
-<div class="line">  PRINT_KEY(Asterisk);</div>
-<div class="line">  PRINT_KEY(NumberSign);</div>
+<div class="line">  PRINT_KEY_STATE(0);</div>
+<div class="line">  PRINT_KEY_STATE(1);</div>
+<div class="line">  PRINT_KEY_STATE(2);</div>
+<div class="line">  PRINT_KEY_STATE(3);</div>
+<div class="line">  PRINT_KEY_STATE(4);</div>
+<div class="line">  PRINT_KEY_STATE(5);</div>
+<div class="line">  PRINT_KEY_STATE(6);</div>
+<div class="line">  PRINT_KEY_STATE(7);</div>
+<div class="line">  PRINT_KEY_STATE(8);</div>
+<div class="line">  PRINT_KEY_STATE(9);</div>
+<div class="line">  PRINT_KEY_STATE(A);</div>
+<div class="line">  PRINT_KEY_STATE(B);</div>
+<div class="line">  PRINT_KEY_STATE(C);</div>
+<div class="line">  PRINT_KEY_STATE(D);</div>
+<div class="line">  PRINT_KEY_STATE(Asterisk);</div>
+<div class="line">  PRINT_KEY_STATE(NumberSign);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassemakefun_1_1_matrix_keyboard_v3_html"><div class="ttname"><a href="classemakefun_1_1_matrix_keyboard_v3.html">emakefun::MatrixKeyboardV3</a></div><div class="ttdoc">矩阵键盘</div><div class="ttdef"><b>Definition</b> matrix_keyboard_v3.h:14</div></div>
+<div class="ttc" id="aclassemakefun_1_1_matrix_keyboard_v3_html"><div class="ttname"><a href="classemakefun_1_1_matrix_keyboard_v3.html">emakefun::MatrixKeyboardV3</a></div><div class="ttdoc">矩阵键盘V3</div><div class="ttdef"><b>Definition</b> matrix_keyboard_v3.h:14</div></div>
 <div class="ttc" id="aclassemakefun_1_1_matrix_keyboard_v3_html_add2f6691a188f21bc3f321864db7877dacc6e784e52eb2db52144fbf179ea97f8"><div class="ttname"><a href="classemakefun_1_1_matrix_keyboard_v3.html#add2f6691a188f21bc3f321864db7877dacc6e784e52eb2db52144fbf179ea97f8">emakefun::MatrixKeyboardV3::kOK</a></div><div class="ttdeci">@ kOK</div><div class="ttdef"><b>Definition</b> matrix_keyboard_v3.h:27</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->

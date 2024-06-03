@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['initialize_0',['Initialize',['../classemakefun_1_1_matrix_keyboard_v3.html#a58cd0797b9c51e51a9187a976dff8f79',1,'emakefun::MatrixKeyboardV3']]]
+  ['getkeystate_0',['GetKeyState',['../classemakefun_1_1_matrix_keyboard_v3.html#a777f0aa5a9ea7a4d3e871d8e2454313c',1,'emakefun::MatrixKeyboardV3']]]
 ];

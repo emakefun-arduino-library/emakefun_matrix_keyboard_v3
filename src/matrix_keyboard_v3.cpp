@@ -29,6 +29,22 @@ bool MatrixKeyboardV3::Released(const MatrixKeyboardV3::Key key) const {
   return (last_key_ & key) != 0 && (key_() & key) == 0;
 }
 
+bool MatrixKeyboardV3::Idle(const MatrixKeyboardV3::Key key) const {
+  return (last_key_ & key) == 0 && (key_() & key) == 0;
+}
+
+MatrixKeyboardV3::KeyState MatrixKeyboardV3::GetKeyState(const Key key) const {
+  if (Pressed(key)) {
+    return kKeyStatePressed;
+  } else if (Pressing(key)) {
+    return kKeyStatePressing;
+  } else if (Released(key)) {
+    return kKeyStateReleased;
+  }
+
+  return kKeyStateIdle;
+}
+
 MatrixKeyboardV3::Key MatrixKeyboardV3::ReadKey() {
   Key key = kKeyNone;
 

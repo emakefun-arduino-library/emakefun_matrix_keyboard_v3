@@ -1,18 +1,9 @@
-#######################################
-# Classes, datatypes (KEYWORD1)
-#######################################
+# Syntax Coloring Map For ExampleLibrary
 
-MatrixKeyboard	KEYWORD1
+# Datatypes (KEYWORD1)
 
-#######################################
 # Methods and Functions (KEYWORD2)
-#######################################
 
-Setup	KEYWORD2
-GetTouchedKey	KEYWORD2
+# Instances (KEYWORD2)
 
-#######################################
 # Constants (LITERAL1)
-#######################################
-
-kDeviceI2cAddressDefault	LITERAL1

@@ -1,5 +1,5 @@
 /**
- * @example print_key.ino
+ * @example print_key_state.ino
  */
 
 #include <Wire.h>
@@ -8,7 +8,7 @@
 
 #define INFINITE_LOOP_ON_FAILURE InfiniteLoopOnFailure(__FUNCTION__, __LINE__)
 
-#define PRINT_KEY(key)                                                            \
+#define PRINT_KEY_STATE(key)                                                      \
   if (g_matrix_keyboard.Pressed(emakefun::MatrixKeyboardV3::kKey##key)) {         \
     Serial.println(F("key " #key " pressed"));                                    \
   } else if (g_matrix_keyboard.Pressing(emakefun::MatrixKeyboardV3::kKey##key)) { \
@@ -50,22 +50,22 @@ void setup() {
 }
 
 void loop() {
-  g_matrix_keyboard.Tick();
+  g_matrix_keyboard.Tick();  // 在循环中调用
 
-  PRINT_KEY(0);
-  PRINT_KEY(1);
-  PRINT_KEY(2);
-  PRINT_KEY(3);
-  PRINT_KEY(4);
-  PRINT_KEY(5);
-  PRINT_KEY(6);
-  PRINT_KEY(7);
-  PRINT_KEY(8);
-  PRINT_KEY(9);
-  PRINT_KEY(A);
-  PRINT_KEY(B);
-  PRINT_KEY(C);
-  PRINT_KEY(D);
-  PRINT_KEY(Asterisk);
-  PRINT_KEY(NumberSign);
+  PRINT_KEY_STATE(0);
+  PRINT_KEY_STATE(1);
+  PRINT_KEY_STATE(2);
+  PRINT_KEY_STATE(3);
+  PRINT_KEY_STATE(4);
+  PRINT_KEY_STATE(5);
+  PRINT_KEY_STATE(6);
+  PRINT_KEY_STATE(7);
+  PRINT_KEY_STATE(8);
+  PRINT_KEY_STATE(9);
+  PRINT_KEY_STATE(A);
+  PRINT_KEY_STATE(B);
+  PRINT_KEY_STATE(C);
+  PRINT_KEY_STATE(D);
+  PRINT_KEY_STATE(Asterisk);
+  PRINT_KEY_STATE(NumberSign);
 }
