@@ -12,21 +12,21 @@ MatrixKeyboardV3::ErrorCode MatrixKeyboardV3::Initialize() {
   return static_cast<ErrorCode>(wire_.endTransmission());
 }
 
-void MatrixKeyboardV3::Update() {
-  last_key_states_ = key_();
+void MatrixKeyboardV3::Tick() {
+  last_key_ = key_();
   key_ = ReadKey();
 }
 
-bool MatrixKeyboardV3::Pressed(const MatrixKeyboardV3::Key key) {
-  return (last_key_states_ & key) == 0 && (key_() & key) != 0;
+bool MatrixKeyboardV3::Pressed(const MatrixKeyboardV3::Key key) const {
+  return (last_key_ & key) == 0 && (key_() & key) != 0;
 }
 
-bool MatrixKeyboardV3::Pressing(const MatrixKeyboardV3::Key key) {
-  return (last_key_states_ & key) != 0 && (key_() & key) != 0;
+bool MatrixKeyboardV3::Pressing(const MatrixKeyboardV3::Key key) const {
+  return (last_key_ & key) != 0 && (key_() & key) != 0;
 }
 
-bool MatrixKeyboardV3::Released(const MatrixKeyboardV3::Key key) {
-  return (last_key_states_ & key) != 0 && (key_() & key) == 0;
+bool MatrixKeyboardV3::Released(const MatrixKeyboardV3::Key key) const {
+  return (last_key_ & key) != 0 && (key_() & key) == 0;
 }
 
 MatrixKeyboardV3::Key MatrixKeyboardV3::ReadKey() {

@@ -36,7 +36,7 @@ class Debouncer {
     return Debounce(value);
   }
 
-  inline T operator()() {
+  inline T operator()() const {
     return last_value_;
   }
 

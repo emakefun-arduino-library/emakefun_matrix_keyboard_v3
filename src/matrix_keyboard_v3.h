@@ -36,22 +36,22 @@ class MatrixKeyboardV3 {
 
   enum Key : uint16_t {
     kKeyNone = 0,
-    kKey0 = 1 << 7,
-    kKey1 = 1 << 0,
-    kKey2 = 1 << 4,
-    kKey3 = 1 << 8,
-    kKey4 = 1 << 1,
-    kKey5 = 1 << 5,
-    kKey6 = 1 << 9,
-    kKey7 = 1 << 2,
-    kKey8 = 1 << 6,
-    kKey9 = 1 << 10,
-    kKeyA = 1 << 12,
-    kKeyB = 1 << 13,
-    kKeyC = 1 << 14,
-    kKeyD = static_cast<uint16_t>(1 << 15),
-    kKeyAsterisk = 1 << 3,
-    kKeyNumberSign = 1 << 11,
+    kKey0 = uint16_t(1) << 7,
+    kKey1 = uint16_t(1) << 0,
+    kKey2 = uint16_t(1) << 4,
+    kKey3 = uint16_t(1) << 8,
+    kKey4 = uint16_t(1) << 1,
+    kKey5 = uint16_t(1) << 5,
+    kKey6 = uint16_t(1) << 9,
+    kKey7 = uint16_t(1) << 2,
+    kKey8 = uint16_t(1) << 6,
+    kKey9 = uint16_t(1) << 10,
+    kKeyA = uint16_t(1) << 12,
+    kKeyB = uint16_t(1) << 13,
+    kKeyC = uint16_t(1) << 14,
+    kKeyD = uint16_t(1) << 15,
+    kKeyAsterisk = uint16_t(1) << 3,
+    kKeyNumberSign = uint16_t(1) << 11,
   };
 
   /**
@@ -62,18 +62,18 @@ class MatrixKeyboardV3 {
   explicit MatrixKeyboardV3(TwoWire& wire = Wire, const uint8_t i2c_address = kDefaultI2cAddress);
 
   /**
-   * @brief 初始化设置
+   * @brief 初始化
    * @return 返回值，参考 @ref ErrorCode
    */
   ErrorCode Initialize();
 
-  void Update();
+  void Tick();
 
-  bool Pressed(const Key key);
+  bool Pressed(const Key key) const;
 
-  bool Pressing(const Key key);
+  bool Pressing(const Key key) const;
 
-  bool Released(const Key key);
+  bool Released(const Key key) const;
 
  private:
   MatrixKeyboardV3(const MatrixKeyboardV3&) = delete;
@@ -83,7 +83,7 @@ class MatrixKeyboardV3 {
   TwoWire& wire_ = Wire;
   const uint8_t i2c_address_ = kDefaultI2cAddress;
   Debouncer<Key> key_;
-  Key last_key_states_ = kKeyNone;
+  Key last_key_ = kKeyNone;
 };
 }  // namespace emakefun
 #endif

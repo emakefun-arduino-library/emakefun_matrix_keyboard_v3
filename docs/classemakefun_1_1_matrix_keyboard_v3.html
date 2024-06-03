@@ -105,26 +105,26 @@ Public 类型</h2></td></tr>
 <tr class="separator:add2f6691a188f21bc3f321864db7877d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a519886532702e406403584ed6878fc92"><td class="memItemLeft" align="right" valign="top"><a id="a519886532702e406403584ed6878fc92" name="a519886532702e406403584ed6878fc92"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Key</b> : uint16_t { <br />
 &#160;&#160;<b>kKeyNone</b> = 0
-, <b>kKey0</b> = 1 &lt;&lt; 7
-, <b>kKey1</b> = 1 &lt;&lt; 0
-, <b>kKey2</b> = 1 &lt;&lt; 4
+, <b>kKey0</b> = uint16_t(1) &lt;&lt; 7
+, <b>kKey1</b> = uint16_t(1) &lt;&lt; 0
+, <b>kKey2</b> = uint16_t(1) &lt;&lt; 4
 , <br />
-&#160;&#160;<b>kKey3</b> = 1 &lt;&lt; 8
-, <b>kKey4</b> = 1 &lt;&lt; 1
-, <b>kKey5</b> = 1 &lt;&lt; 5
-, <b>kKey6</b> = 1 &lt;&lt; 9
+&#160;&#160;<b>kKey3</b> = uint16_t(1) &lt;&lt; 8
+, <b>kKey4</b> = uint16_t(1) &lt;&lt; 1
+, <b>kKey5</b> = uint16_t(1) &lt;&lt; 5
+, <b>kKey6</b> = uint16_t(1) &lt;&lt; 9
 , <br />
-&#160;&#160;<b>kKey7</b> = 1 &lt;&lt; 2
-, <b>kKey8</b> = 1 &lt;&lt; 6
-, <b>kKey9</b> = 1 &lt;&lt; 10
-, <b>kKeyA</b> = 1 &lt;&lt; 12
+&#160;&#160;<b>kKey7</b> = uint16_t(1) &lt;&lt; 2
+, <b>kKey8</b> = uint16_t(1) &lt;&lt; 6
+, <b>kKey9</b> = uint16_t(1) &lt;&lt; 10
+, <b>kKeyA</b> = uint16_t(1) &lt;&lt; 12
 , <br />
-&#160;&#160;<b>kKeyB</b> = 1 &lt;&lt; 13
-, <b>kKeyC</b> = 1 &lt;&lt; 14
-, <b>kKeyD</b> = static_cast&lt;uint16_t&gt;(1 &lt;&lt; 15)
-, <b>kKeyAsterisk</b> = 1 &lt;&lt; 3
+&#160;&#160;<b>kKeyB</b> = uint16_t(1) &lt;&lt; 13
+, <b>kKeyC</b> = uint16_t(1) &lt;&lt; 14
+, <b>kKeyD</b> = uint16_t(1) &lt;&lt; 15
+, <b>kKeyAsterisk</b> = uint16_t(1) &lt;&lt; 3
 , <br />
-&#160;&#160;<b>kKeyNumberSign</b> = 1 &lt;&lt; 11
+&#160;&#160;<b>kKeyNumberSign</b> = uint16_t(1) &lt;&lt; 11
 <br />
  }</td></tr>
 <tr class="separator:a519886532702e406403584ed6878fc92"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,20 +135,20 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:ab05cd35aa4aed409078f7d8a90374b23"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
 <tr class="separator:ab05cd35aa4aed409078f7d8a90374b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58cd0797b9c51e51a9187a976dff8f79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classemakefun_1_1_matrix_keyboard_v3.html#add2f6691a188f21bc3f321864db7877d">ErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemakefun_1_1_matrix_keyboard_v3.html#a58cd0797b9c51e51a9187a976dff8f79">Initialize</a> ()</td></tr>
-<tr class="memdesc:a58cd0797b9c51e51a9187a976dff8f79"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化设置  <br /></td></tr>
+<tr class="memdesc:a58cd0797b9c51e51a9187a976dff8f79"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化  <br /></td></tr>
 <tr class="separator:a58cd0797b9c51e51a9187a976dff8f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada1df05319b63b5ffe115a3913789fcb"><td class="memItemLeft" align="right" valign="top"><a id="ada1df05319b63b5ffe115a3913789fcb" name="ada1df05319b63b5ffe115a3913789fcb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> ()</td></tr>
-<tr class="separator:ada1df05319b63b5ffe115a3913789fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ba57b46eae6dfbe7c712c65ed38ed35"><td class="memItemLeft" align="right" valign="top"><a id="a9ba57b46eae6dfbe7c712c65ed38ed35" name="a9ba57b46eae6dfbe7c712c65ed38ed35"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Pressed</b> (const Key key)</td></tr>
-<tr class="separator:a9ba57b46eae6dfbe7c712c65ed38ed35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a225206836bd3e52b2a6585dd7ec1b0ff"><td class="memItemLeft" align="right" valign="top"><a id="a225206836bd3e52b2a6585dd7ec1b0ff" name="a225206836bd3e52b2a6585dd7ec1b0ff"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Pressing</b> (const Key key)</td></tr>
-<tr class="separator:a225206836bd3e52b2a6585dd7ec1b0ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa549e80f47da5f6e60f3e9f82e537e97"><td class="memItemLeft" align="right" valign="top"><a id="aa549e80f47da5f6e60f3e9f82e537e97" name="aa549e80f47da5f6e60f3e9f82e537e97"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Released</b> (const Key key)</td></tr>
-<tr class="separator:aa549e80f47da5f6e60f3e9f82e537e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6db06e8fe62f8b65f96a96f5f249d36"><td class="memItemLeft" align="right" valign="top"><a id="aa6db06e8fe62f8b65f96a96f5f249d36" name="aa6db06e8fe62f8b65f96a96f5f249d36"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Tick</b> ()</td></tr>
+<tr class="separator:aa6db06e8fe62f8b65f96a96f5f249d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8c544a59c656f51b1c06c74f40d49b9"><td class="memItemLeft" align="right" valign="top"><a id="ae8c544a59c656f51b1c06c74f40d49b9" name="ae8c544a59c656f51b1c06c74f40d49b9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Pressed</b> (const Key key) const</td></tr>
+<tr class="separator:ae8c544a59c656f51b1c06c74f40d49b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a535b68b26db6d72343b44140e4db58f6"><td class="memItemLeft" align="right" valign="top"><a id="a535b68b26db6d72343b44140e4db58f6" name="a535b68b26db6d72343b44140e4db58f6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Pressing</b> (const Key key) const</td></tr>
+<tr class="separator:a535b68b26db6d72343b44140e4db58f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9198c3b68994cc6ec2048f08be69d8ec"><td class="memItemLeft" align="right" valign="top"><a id="a9198c3b68994cc6ec2048f08be69d8ec" name="a9198c3b68994cc6ec2048f08be69d8ec"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Released</b> (const Key key) const</td></tr>
+<tr class="separator:a9198c3b68994cc6ec2048f08be69d8ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静态 Public 属性</h2></td></tr>
@@ -257,7 +257,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>Released</b> (const K
       </table>
 </div><div class="memdoc">
 
-<p>初始化设置 </p>
+<p>初始化 </p>
 <dl class="section return"><dt>返回</dt><dd>返回值，参考 <a class="el" href="classemakefun_1_1_matrix_keyboard_v3.html#add2f6691a188f21bc3f321864db7877d">ErrorCode</a> </dd></dl>
 
 </div>

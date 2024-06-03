@@ -50,7 +50,7 @@ void setup() {
 }
 
 void loop() {
-  g_matrix_keyboard.Update();
+  g_matrix_keyboard.Tick();
 
   PRINT_KEY(0);
   PRINT_KEY(1);
