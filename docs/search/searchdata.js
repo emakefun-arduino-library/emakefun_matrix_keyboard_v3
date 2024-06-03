@@ -1,9 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "gkms~",
-  1: "m",
-  2: "gms~",
-  3: "k"
+  0: "deikm",
+  1: "dm",
+  2: "im",
+  3: "k",
+  4: "e",
+  5: "k"
 };
 
 var indexSectionNames =
@@ -11,7 +13,9 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "functions",
-  3: "enumvalues"
+  3: "variables",
+  4: "enums",
+  5: "enumvalues"
 };
 
 var indexSectionLabels =
@@ -19,6 +23,8 @@ var indexSectionLabels =
   0: "全部",
   1: "类",
   2: "函数",
-  3: "枚举值"
+  3: "变量",
+  4: "枚举",
+  5: "枚举值"
 };
 

@@ -1,88 +1,90 @@
-/*
- * MIT License
- *
- * Copyright (c) 2023 emakefun
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
+#ifndef EMAKEFUN_MATRIX_KEY_BOARD_V3_H_
+#define EMAKEFUN_MATRIX_KEY_BOARD_V3_H_
 
-#pragma once
-
+#include <Wire.h>
 #include <stdint.h>
 
+#include "debouncer.h"
+
+namespace emakefun {
 /**
  * @brief 矩阵键盘
- * @class MatrixKeyboard
+ * @class MatrixKeyboardV3
  */
-class MatrixKeyboard {
+class MatrixKeyboardV3 {
  public:
   /**
    * @brief 默认I2C地址
    *
    */
-  enum : uint8_t { kDeviceI2cAddressDefault = 0x65, /**< 0x65, 默认I2C地址 */ };
+  static constexpr uint8_t kDefaultI2cAddress = 0x65; /**< 0x65: 默认I2C地址 */
+
+  /**
+   * @enum ErrorCode
+   * @brief 错误码
+   */
+  enum ErrorCode : uint32_t {
+    kOK = 0,                                  /**< 0：成功 */
+    kI2cDataTooLongToFitInTransmitBuffer = 1, /**< 1：I2C数据太长，无法装入传输缓冲区 */
+    kI2cReceivedNackOnTransmitOfAddress = 2,  /**< 2：在I2C发送地址时收到NACK */
+    kI2cReceivedNackOnTransmitOfData = 3,     /**< 3：在I2C发送数据时收到NACK */
+    kI2cOtherError = 4,                       /**< 4：其他I2C错误 */
+    kI2cTimeout = 5,                          /**< 5：I2C通讯超时 */
+    kInvalidParameter = 6,                    /**< 6：参数错误 */
+    kUnknownError = 7,                        /**< 7: 未知错误*/
+  };
+
+  enum Key : uint16_t {
+    kKeyNone = 0,
+    kKey0 = 1 << 7,
+    kKey1 = 1 << 0,
+    kKey2 = 1 << 4,
+    kKey3 = 1 << 8,
+    kKey4 = 1 << 1,
+    kKey5 = 1 << 5,
+    kKey6 = 1 << 9,
+    kKey7 = 1 << 2,
+    kKey8 = 1 << 6,
+    kKey9 = 1 << 10,
+    kKeyA = 1 << 12,
+    kKeyB = 1 << 13,
+    kKeyC = 1 << 14,
+    kKeyD = static_cast<uint16_t>(1 << 15),
+    kKeyAsterisk = 1 << 3,
+    kKeyNumberSign = 1 << 11,
+  };
+
   /**
    * @brief 构造函数
-   * @param [in] device_i2c_address 矩阵键盘的I2C地址，默认值为0x65
+   * @param [in] wire TwoWire对象，默认为Arduino Wire
+   * @param [in] i2c_address 手势识别传感器I2C地址，默认值为0x39
    */
-  MatrixKeyboard(const uint8_t device_i2c_address = kDeviceI2cAddressDefault);
-  /**
-   * @brief 析构函数
-   */
-  virtual ~MatrixKeyboard() = default;
+  explicit MatrixKeyboardV3(TwoWire& wire = Wire, const uint8_t i2c_address = kDefaultI2cAddress);
+
   /**
    * @brief 初始化设置
-   * @retval true - 成功
-   * @retval false - 失败
+   * @return 返回值，参考 @ref ErrorCode
    */
-  bool Setup();
+  ErrorCode Initialize();
 
-  /**
-   * @brief 获取当前按下的按键值
-   * @return @b 按键值，字符型
-   * @warning @b 注意是字符型，不是整型或其他类型
-   * @return @b '\0' - 无按键
-   * @return @b '0' - 按键0
-   * @return @b '1' - 按键1
-   * @return @b '2' - 按键2
-   * @return @b '3' - 按键3
-   * @return @b '4' - 按键4
-   * @return @b '5' - 按键5
-   * @return @b '6' - 按键6
-   * @return @b '7' - 按键7
-   * @return @b '8' - 按键8
-   * @return @b '9' - 按键9
-   * @return @b 'A' - 按键A
-   * @return @b 'B' - 按键B
-   * @return @b 'C' - 按键C
-   * @return @b 'D' - 按键D
-   * @return @b '*' - 按键*
-   * @return @b '#' - 按键#
-   */
-  char GetTouchedKey();
+  void Update();
+
+  bool Pressed(const Key key);
+
+  bool Pressing(const Key key);
+
+  bool Released(const Key key);
 
  private:
-  MatrixKeyboard(const MatrixKeyboard&) = delete;
-  MatrixKeyboard& operator=(const MatrixKeyboard&) = delete;
-  int16_t ReadButtonStates();
+  MatrixKeyboardV3(const MatrixKeyboardV3&) = delete;
+  MatrixKeyboardV3& operator=(const MatrixKeyboardV3&) = delete;
+  Key ReadKey();
 
-  const uint8_t device_i2c_address_;
-  int16_t last_button_states_ = 0;
-  int16_t button_states_ = 0;
+  TwoWire& wire_ = Wire;
+  const uint8_t i2c_address_ = kDefaultI2cAddress;
+  Debouncer<Key> debouncer_;
+  Key last_key_states_ = kKeyNone;
+  Key key_states_ = kKeyNone;
 };
+}  // namespace emakefun
+#endif

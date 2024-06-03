@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gettouchedkey_0',['GetTouchedKey',['../class_matrix_keyboard.html#a41fabc23b0f8b8460b2278314df8a2fe',1,'MatrixKeyboard']]]
+  ['debouncer_0',['Debouncer',['../classemakefun_1_1_debouncer.html',1,'emakefun']]],
+  ['debouncer_3c_20key_20_3e_1',['Debouncer&lt; Key &gt;',['../classemakefun_1_1_debouncer.html',1,'emakefun']]]
 ];
