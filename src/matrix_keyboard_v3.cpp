@@ -14,7 +14,7 @@ MatrixKeyboardV3::ErrorCode MatrixKeyboardV3::Initialize() {
 
 void MatrixKeyboardV3::Update() {
   last_key_states_ = key_states_;
-  key_states_ = debouncer_.Debounce(ReadKey());
+  key_states_ = debouncer_(ReadKey());
 }
 
 bool MatrixKeyboardV3::Pressed(const MatrixKeyboardV3::Key key) {
