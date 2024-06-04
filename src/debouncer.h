@@ -8,17 +8,14 @@ namespace emakefun {
 template <typename T>
 class Debouncer {
  public:
-  Debouncer(const T value) : debouncing_value_(value), last_value_(value) {
-    start_debounce_time_ = millis();
+  static constexpr uint64_t kDefaultDebounceDurationMs = 20;
+
+  Debouncer(const T& value, uint64_t debounce_duration_ms = kDefaultDebounceDurationMs)
+      : debouncing_value_(value), last_value_(value), debounce_duration_ms_(debounce_duration_ms) {
   }
 
-  void Start(const uint64_t debounce_duration_ms) {
-    debounce_duration_ms_ = debounce_duration_ms;
-    start_debounce_time_ = millis();
-  }
-
-  T Debounce(const T value) {
-    if (value != debouncing_value_) {
+  const T& Debounce(const T& value) {
+    if (start_debounce_time_ == UINT64_MAX || value != debouncing_value_) {
       debouncing_value_ = value;
       start_debounce_time_ = millis();
     } else if (last_value_ != debouncing_value_ && millis() - start_debounce_time_ >= debounce_duration_ms_) {
@@ -28,23 +25,23 @@ class Debouncer {
     return last_value_;
   }
 
-  inline T operator()(const T value) {
+  inline const T& operator()(const T& value) {
     return Debounce(value);
   }
 
-  inline T operator=(const T value) {
+  inline const T& operator=(const T& value) {
     return Debounce(value);
   }
 
-  inline T operator()() const {
+  inline const T& operator()() const {
     return last_value_;
   }
 
  private:
   T debouncing_value_;
   T last_value_;
-  uint64_t debounce_duration_ms_ = 10;
-  uint64_t start_debounce_time_ = 0;
+  const uint64_t debounce_duration_ms_ = kDefaultDebounceDurationMs;
+  uint64_t start_debounce_time_ = UINT64_MAX;
 };
 }  // namespace emakefun
 

@@ -75,6 +75,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-attribs">静态 Public 属性</a> &#124;
 <a href="classemakefun_1_1_debouncer-members.html">所有成员列表</a>  </div>
   <div class="headertitle"><div class="title">emakefun::Debouncer&lt; T &gt; 模板类 参考</div></div>
 </div><!--header-->
@@ -82,24 +83,27 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:adbef36fb9f32818811c73b30a757fd94"><td class="memItemLeft" align="right" valign="top"><a id="adbef36fb9f32818811c73b30a757fd94" name="adbef36fb9f32818811c73b30a757fd94"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Debouncer</b> (const T value)</td></tr>
-<tr class="separator:adbef36fb9f32818811c73b30a757fd94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae472c2212b38fe66882acdfb15099c03"><td class="memItemLeft" align="right" valign="top"><a id="ae472c2212b38fe66882acdfb15099c03" name="ae472c2212b38fe66882acdfb15099c03"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> (const uint64_t debounce_duration_ms)</td></tr>
-<tr class="separator:ae472c2212b38fe66882acdfb15099c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1e69ec0e84cb32877b12290c1b5d67f"><td class="memItemLeft" align="right" valign="top"><a id="aa1e69ec0e84cb32877b12290c1b5d67f" name="aa1e69ec0e84cb32877b12290c1b5d67f"></a>
-T&#160;</td><td class="memItemRight" valign="bottom"><b>Debounce</b> (const T value)</td></tr>
-<tr class="separator:aa1e69ec0e84cb32877b12290c1b5d67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cb12cb06ca74bc473f11f1ac90b8d74"><td class="memItemLeft" align="right" valign="top"><a id="a6cb12cb06ca74bc473f11f1ac90b8d74" name="a6cb12cb06ca74bc473f11f1ac90b8d74"></a>
-T&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const T value)</td></tr>
-<tr class="separator:a6cb12cb06ca74bc473f11f1ac90b8d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac399348b9cb36b39a0ed771cadc0363"><td class="memItemLeft" align="right" valign="top"><a id="aac399348b9cb36b39a0ed771cadc0363" name="aac399348b9cb36b39a0ed771cadc0363"></a>
-T&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const T value)</td></tr>
-<tr class="separator:aac399348b9cb36b39a0ed771cadc0363"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7e65f22ed66efc691c93a39f43cab68"><td class="memItemLeft" align="right" valign="top"><a id="ac7e65f22ed66efc691c93a39f43cab68" name="ac7e65f22ed66efc691c93a39f43cab68"></a>
-T&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> () const</td></tr>
-<tr class="separator:ac7e65f22ed66efc691c93a39f43cab68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c8a3756a240d25221a9a1d86cee14c"><td class="memItemLeft" align="right" valign="top"><a id="a15c8a3756a240d25221a9a1d86cee14c" name="a15c8a3756a240d25221a9a1d86cee14c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Debouncer</b> (const T &amp;value, uint64_t debounce_duration_ms=kDefaultDebounceDurationMs)</td></tr>
+<tr class="separator:a15c8a3756a240d25221a9a1d86cee14c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a900982513a819b0b21113a378063662c"><td class="memItemLeft" align="right" valign="top"><a id="a900982513a819b0b21113a378063662c" name="a900982513a819b0b21113a378063662c"></a>
+const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>Debounce</b> (const T &amp;value)</td></tr>
+<tr class="separator:a900982513a819b0b21113a378063662c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d2c6099da1390c091c4b390cdb67a95"><td class="memItemLeft" align="right" valign="top"><a id="a7d2c6099da1390c091c4b390cdb67a95" name="a7d2c6099da1390c091c4b390cdb67a95"></a>
+const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const T &amp;value)</td></tr>
+<tr class="separator:a7d2c6099da1390c091c4b390cdb67a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d7904647691ec3042db812fdf71ca0b"><td class="memItemLeft" align="right" valign="top"><a id="a2d7904647691ec3042db812fdf71ca0b" name="a2d7904647691ec3042db812fdf71ca0b"></a>
+const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const T &amp;value)</td></tr>
+<tr class="separator:a2d7904647691ec3042db812fdf71ca0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b10b6d7398191e21e8ea19fdf2fd7f2"><td class="memItemLeft" align="right" valign="top"><a id="a6b10b6d7398191e21e8ea19fdf2fd7f2" name="a6b10b6d7398191e21e8ea19fdf2fd7f2"></a>
+const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> () const</td></tr>
+<tr class="separator:a6b10b6d7398191e21e8ea19fdf2fd7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+静态 Public 属性</h2></td></tr>
+<tr class="memitem:aed8984a7f34d350416d4f8c47d8a13a6"><td class="memItemLeft" align="right" valign="top"><a id="aed8984a7f34d350416d4f8c47d8a13a6" name="aed8984a7f34d350416d4f8c47d8a13a6"></a>
+static constexpr uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>kDefaultDebounceDurationMs</b> = 20</td></tr>
+<tr class="separator:aed8984a7f34d350416d4f8c47d8a13a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>src/<a class="el" href="debouncer_8h_source.html">debouncer.h</a></li>

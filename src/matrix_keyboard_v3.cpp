@@ -4,12 +4,18 @@ namespace emakefun {
 
 MatrixKeyboardV3::MatrixKeyboardV3(TwoWire& wire, const uint8_t i2c_address)
     : wire_(wire), i2c_address_(i2c_address), key_(kKeyNone) {
-  key_.Start(10);
 }
 
 MatrixKeyboardV3::ErrorCode MatrixKeyboardV3::Initialize() {
-  wire_.beginTransmission(i2c_address_);
-  return static_cast<ErrorCode>(wire_.endTransmission());
+  ErrorCode ret = kUnknownError;
+  for (uint8_t i = 0; i < 5; i++) {
+    wire_.beginTransmission(i2c_address_);
+    ret = static_cast<ErrorCode>(wire_.endTransmission());
+    if (ret == kOK) {
+      return ret;
+    }
+  }
+  return ret;
 }
 
 void MatrixKeyboardV3::Tick() {
