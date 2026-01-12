@@ -1,57 +1,63 @@
 /**
+ * @~Chinese
+ * @file print_key_state.ino
+ * @brief 示例：循环判断每个按键的状态。
  * @example print_key_state.ino
+ * 循环判断每个按键的状态
+ */
+/**
+ * @~English
+ * @file print_key_state.ino
+ * @brief Example: Loop to determine the status of each key.
+ * @example print_key_state.ino
+ * Loop to determine the status of each key.
  */
 
 #include <Wire.h>
 
-#include "matrix_keyboard_v3.h"
+#include "matrix_keyboard.h"
 
-#define INFINITE_LOOP_ON_FAILURE InfiniteLoopOnFailure(__FUNCTION__, __LINE__)
-
-#define PRINT_KEY_STATE(key)                                                      \
-  if (g_matrix_keyboard.Pressed(emakefun::MatrixKeyboardV3::kKey##key)) {         \
-    Serial.println(F("key " #key " pressed"));                                    \
-  } else if (g_matrix_keyboard.Pressing(emakefun::MatrixKeyboardV3::kKey##key)) { \
-    Serial.println(F("key " #key " pressing"));                                   \
-  } else if (g_matrix_keyboard.Released(emakefun::MatrixKeyboardV3::kKey##key)) { \
-    Serial.println(F("key " #key " released"));                                   \
+#define PRINT_KEY_STATE(key)                                                    \
+  if (g_matrix_keyboard.Pressed(emakefun::MatrixKeyboard::kKey##key)) {         \
+    Serial.println(F("key " #key " pressed"));                                  \
+  } else if (g_matrix_keyboard.Pressing(emakefun::MatrixKeyboard::kKey##key)) { \
+    Serial.println(F("key " #key " pressing"));                                 \
+  } else if (g_matrix_keyboard.Released(emakefun::MatrixKeyboard::kKey##key)) { \
+    Serial.println(F("key " #key " released"));                                 \
   }
 
 namespace {
+#if defined(ESP32)
+constexpr gpio_num_t kI2cPinSda = GPIO_NUM_21;
+constexpr gpio_num_t kI2cPinScl = GPIO_NUM_22;
+#endif
 
-emakefun::MatrixKeyboardV3 g_matrix_keyboard;
-
-void InfiniteLoopOnFailure(const char* function, const uint32_t line_number) {
-  Serial.println(String(F("entering an infinite loop due to failure in ")) + function + F(", at line number: ") + line_number);
-  while (true) {
-    yield();
-  }
-}
+emakefun::MatrixKeyboard g_matrix_keyboard(Wire, emakefun::MatrixKeyboard::kDefaultI2cAddress);
 
 }  // namespace
 
 void setup() {
   Serial.begin(115200);
-  Serial.println(F("setup"));
 
+#if defined(ESP32)
+  Wire.begin(kI2cPinSda, kI2cPinScl);
+#else
   Wire.begin();
+#endif
 
-  const auto ret = g_matrix_keyboard.Initialize();
+  const auto result = g_matrix_keyboard.Initialize();
 
-  if (emakefun::MatrixKeyboardV3::kOK == ret) {
+  if (emakefun::MatrixKeyboard::ErrorCode::kOK == result) {
     Serial.println(F("matrix keyboard initialization successful"));
   } else {
-    Serial.print(F("matrix keyboard initialization failed: "));
-    Serial.println(ret);
-    INFINITE_LOOP_ON_FAILURE;
+    Serial.print(F("Error: matrix keyboard initialization failed: "));
+    Serial.println(static_cast<uint32_t>(result));
+    while (true);
   }
-
-  Serial.println(F("setup successful"));
 }
 
 void loop() {
-  g_matrix_keyboard.Tick();  // 在循环中调用
-
+  g_matrix_keyboard.Tick();
   PRINT_KEY_STATE(0);
   PRINT_KEY_STATE(1);
   PRINT_KEY_STATE(2);

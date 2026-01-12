@@ -1,8 +1,0 @@
-@INCLUDE_PATH  = doxygen
-@INCLUDE = base.cfg
-PROJECT_NAME     = "Emakefun matrix keyboard
-PROJECT_NUMBER   = 3.0
-ENABLED_SECTIONS = Chinese
-OUTPUT_LANGUAGE  = Chinese
-INPUT            = src \
-                 = examples/print_key_state/print_key_state.ino

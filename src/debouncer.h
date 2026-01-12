@@ -1,5 +1,7 @@
-#ifndef EMAKEFUN_DEBOUNCER_H_
-#define EMAKEFUN_DEBOUNCER_H_
+#pragma once
+
+#ifndef _EMAKEFUN_DEBOUNCER_H_
+#define _EMAKEFUN_DEBOUNCER_H_
 
 #include <Arduino.h>
 #include <stdint.h>
