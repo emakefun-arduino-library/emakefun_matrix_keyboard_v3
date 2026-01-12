@@ -1,15 +1,5 @@
-# Emakefun Matrix Keyboard V3.0
+# Emakefun MATRIX KEYBOARD
 
-这个Arduino库是用于使用`emakefun`的矩阵键盘
+## Introduction
 
-## 产品详情
-
-<!-- [产品详情链接](https://emakefun-docs.readthedocs.io/zh_CN/latest/sensors/smart_modules/gesture_recognizer/) -->
-
-## Class MatrixKeyboard 介绍
-
-[文档链接](https://emakefun-arduino-library.github.io/emakefun_matrix_keyboard_v3/class_matrix_keyboard.html)
-
-## 示例程序
-
-- 获取当前的按键值 [链接](https://emakefun-arduino-library.github.io/emakefun_matrix_keyboard_v3/get_touched_key_8ino-example.html)
+Matrix keyboard module library. The matrix keyboard module is used for the matrix keyboard of emakefun, which can obtain the status of the matrix keyboard keys and the currently pressed key.
